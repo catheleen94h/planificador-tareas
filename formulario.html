@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main class="contenedor-principal">
+        <a href="index.html">← Volver a planificación</a><br><br>
+        <h1>Dale espacio a una nueva tarea</h1>
+        <p>Define qué hay que hacer, quién se encarga y cuándo estara listo.</p>
+     <form> 
+        <div class="tarjeta"> 
+            <div class="tarjeta-titulo">
+                <h3>Nueva Tarea</h3>
+                <p>Todos los campos son obligatorios. Los encontrarás marcados con *.</p>
+            </div>
+            <div class="tarjeta-nombre-descripcion">
+                <label for="tarea">Nombre *</label>
+                <input type="text" name="tarea" id="tarea" placeholder="Ej. Comparar dimensiones del documento" required>
+                <small>Elige in nombre breve que explique la tarea.</small>
+                <label for="descripcion">Descripcion *</label>
+                <input type="text" name="descripcion" id="descripcion" placeholder="Describe que necesitas hacer y el resultado esperado..." required>
+                <small>Añade el texto necesario para empezar con claridad.</small>
+            </div>
+            <div class="tarjeta-asignado">
+               <div class="asignado">
+                <label for="asignadoA">AsignadoA *</label>
+                <select id="asignadoA" required>
+                    <option value="" disabled selected>Selecciona una persona</option>
+                    <option value="usuario1">Catheleen Hernández</option>
+                    <option value="usuario2">Juan Pérez</option>
+                    <option value="usuario3">María Gómez</option>
+                </select>
+                    <small>Persona responsable de completar la tarea.</small>
+                </div>
+                <div class="fecha de entrega">
+                    <label for="fechaEntrega">Fecha de Entrega *</label>
+                    <input type="date" id="fechaEntrega" required />
+                     <small>Indica la fecha límite de entrega.</small>
+                </div>
+            </div>
+            
+            <div class="tarjeta-estado">
+                <label for="estado">Estado *</label>
+                <select id="estado" required>
+                    <option value="" disabled selected>Selecciona estado</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="enproceso">En proceso</option>
+                    <option value="finalizado">Finalizado</option>
+                    <small>Opciones pendiente, en proceso, finalizado.</small>
+                </select>
+            </div>
+        
+            <div class="tarjeta-boton">
+                <div class="texto">
+                <small>La tarea se añadira a tu planificación al guardar.</small>
+                </div>
+                <div class="btnes">
+                    <button type="button" id="btn-cancelar">Cancelar</button>
+                    <button type="button" id="btn-guardar"> Guardar tarea </button>
+                </div>
+           
+            </div>
+        
+        
+        </div>
+     </form>
+    </main>
+
+    
+</body>
+</html>
