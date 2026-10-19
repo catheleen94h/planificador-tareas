@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador - Semana editorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- 1. Menú Lateral (Sidebar) -->
+    <div id="contenedor-navbar"></div>
+
+    <!-- Panel Central -->
+    <main class="contenedor-principal">
+        <!-- 2. Barra de Navegación Superior -->
+        <div id="contenedor-top-navbar"></div>
+
+        <section class="seccion-cabecera">
+    <div class="titulos-cabecera">
+        <h1 class="titulo-principal">Tu semana, con intención.</h1>
+        <p class="subtitulo-principal">Organiza lo que viene y dale espacio a lo que importa.</p>
+    </div>
+    <a href="../formulario/formulario.html" class="btn-nueva-tarea">+ Nueva tarea</a>
+</section>
+
+        <h3 class="titulo-seccion-tareas">Lista de Tareas</h3>
+        
+        <!-- Contenedor donde se renderizan las tarjetas dinámicamente -->
+        <div id="contenedor-lista-tareas"></div>
+    </main>
+
+    <!-- Scripts de carga de componentes y renderizado -->
+    <script src="../componentes/navbar-lateral/cargar-navbar.js"></script>
+    <script src="../componentes/navbar-superior/cargar-top-navbar.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
