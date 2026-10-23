@@ -1,0 +1,193 @@
+/* ==========================================
+    BARRA DE NAVEGACIÓN LATERAL (SIDEBAR)
+   ========================================== */
+
+.barra-navegacion-lateral {
+    width: 240px;
+    min-width: 240px;
+    height: 100vh;
+    background-color: #f4f3ee;
+    border-right: 1px solid #e5e4de;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-left: 8px;
+}
+
+.icono-logo {
+    background-color: #3b5f48;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-logo h2 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #2b2b2b;
+    margin: 0;
+}
+
+.tarjeta-espacio {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.avatar-espacio {
+    width: 32px;
+    height: 32px;
+    background-color: #f2e8cf;
+    color: #8c7138;
+    font-weight: bold;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.info-espacio {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.titulo-espacio {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222;
+}
+
+.subtitulo-espacio {
+    font-size: 11px;
+    color: #888;
+}
+
+.flechas-selector {
+    color: #888;
+    font-size: 12px;
+}
+
+.lista-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Efecto Hover (Al pasar el cursor) */
+.item-menu:hover {
+    background-color: #eae8df;
+    color: #2d4533;
+}
+
+/* ESTADO ACTIVO: Forzado para garantizar que tome el color al hacer clic o estar en la página */
+.item-menu.activo,
+.lista-menu li.activo .item-menu {
+    background-color: #dbe4d6 !important;
+    color: #2d4533 !important;
+    font-weight: 600;
+}
+
+.item-menu.activo .contador,
+.item-menu:hover .contador,
+.lista-menu li.activo .item-menu .contador {
+    color: #2d4533;
+}
+
+.texto-item {
+    flex: 1;
+}
+
+.contador {
+    font-size: 12px;
+    color: #888;
+}
+
+.seccion-proyectos {
+    display: flex;
+    flex-direction: column;
+}
+
+.encabezado-proyectos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.btn-mas {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #888;
+    cursor: pointer;
+}
+
+.lista-proyectos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lista-proyectos li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #444;
+    padding-left: 8px;
+}
+
+.punto {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+.punto.verde { background-color: #3b5f48; }
+.punto.dorado { background-color: #a87d32; }
+.punto.azul { background-color: #557c93; }

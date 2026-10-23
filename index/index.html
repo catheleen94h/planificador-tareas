@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planificador - Semana editorial</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Planificador</title>
+    <link rel="stylesheet" href="/css/navbar-lateral.css">
+    <link rel="stylesheet" href="/css/navbar-superior.css">
+    <link rel="stylesheet" href="/css/index.css">
+
 </head>
 <body>
 
@@ -18,21 +21,103 @@
 
         <section class="seccion-cabecera">
             <div class="titulos-cabecera">
-            <h1 class="titulo-principal">Tu semana, con intención.</h1>
-            <p class="subtitulo-principal">Organiza lo que viene y dale espacio a lo que importa.</p>
+                <h1 class="titulo-principal">Tu semana, con intención.</h1>
+                <p class="subtitulo-principal">Organiza lo que viene y dale espacio a lo que importa.</p>
             </div>
-            <a href="../formulario/formulario.html" class="btn-nueva-tarea">+ Nueva tarea</a>
-</section>
+            <!-- Botón cambiado a elemento <button> para manejar el evento con JS -->
+            <button id="btn-nueva-tarea" class="btn-nueva-tarea">+ Nueva tarea</button>
+        </section>
 
         <h3 class="titulo-seccion-tareas">Lista de Tareas</h3>
         
-        <!-- Contenedor donde se renderizan las tarjetas dinámicamente -->
-        <div id="contenedor-lista-tareas"></div>
+          <div class="contenedor-tabla-tareas">
+            <table class="tabla-tareas">
+                <thead>
+                    <tr>
+                        <th>Tarea</th>
+                        <th>Descripción</th>
+                        <th>Fecha entrega</th>
+                        <th>Asignado A</th>
+                        <th>Estado</th>
+                        <th>Acciones</th> 
+                    </tr>
+                </thead>
+                <tbody id="contenedor-lista-tareas">
+                    <!-- Las tareas se insertarán aquí dinámicamente mediante JS -->
+                </tbody>
+            </table>
+        </div>
+
     </main>
 
+    <!-- VENTANA EMERGENTE (MODAL) DEL FORMULARIO -->
+    <div id="contenedor-formulario-modal">
+        <div class="modal-contenido">
+          
+            
+            <form id="formulario-tarea"> 
+                <div class="tarjeta"> 
+                    <div class="tarjeta-titulo">
+                        <h3>Nueva Tarea</h3>
+                        <p>Todos los campos son obligatorios. Los encontrarás marcados con *.</p>
+                    </div>
+                    
+                    <div class="tarjeta-nombre-descripcion">
+                        <div class="nombre">
+                            <label for="tarea">Nombre *</label>
+                            <input type="text" name="tarea" id="tarea" placeholder="Ej. Comparar dimensiones del documento" required>
+                            <small>Elige un nombre breve que explique la tarea.</small>
+                        </div>
+
+                        <div class="descripcion">
+                            <label for="descripcion">Descripcion *</label>
+                            <input type="text" name="descripcion" id="descripcion" placeholder="Describe que necesitas hacer y el resultado esperado..." required>
+                            <small>Añade el texto necesario para empezar con claridad.</small>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta-asignado">
+                       <div class="asignado">
+                            <label for="asignadoA">Asignado a: *</label>
+                            <input type="text" name="asignadoA" id="asignadoA" required>
+                            <small>Persona responsable de completar la tarea.</small>
+                        </div>
+                        <div class="fecha-de-entrega">
+                            <label for="fechaEntrega">Fecha de Entrega *</label>
+                            <input type="date" id="fechaEntrega" required />
+                            <small>Indica la fecha límite de entrega.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="tarjeta-estado">
+                        <label for="estado">Estado *</label>
+                        <select id="estado" required>
+                            <option value="" disabled selected>Selecciona estado</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en proceso">En proceso</option>
+                            <option value="finalizado">Finalizado</option>
+                        </select>
+                        <small>Opciones pendiente, en proceso, finalizado.</small>
+                    </div>
+                
+                    <div class="tarjeta-boton">
+                        <div class="texto">
+                            <small>La tarea se añadirá a tu planificación al guardar.</small>
+                        </div>
+                        <div class="btnes">
+                            <button type="button" id="btn-cancelar">Cancelar</button>
+                            <button type="submit" id="btn-guardar">Guardar tarea</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Scripts de carga de componentes y renderizado -->
-    <script src="../componentes/navbar-lateral/cargar-navbar.js"></script>
-    <script src="../componentes/navbar-superior/cargar-top-navbar.js"></script>
-    <script src="index.js"></script>
+    <script src="/js/cargar-lateral-navbar.js"></script>
+    <script src="/js/cargar-top-navbar.js"></script>
+    <script src="/js/formulario.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>

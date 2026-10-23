@@ -1,0 +1,63 @@
+/* ==========================================
+    BARRA DE NAVEGACIÓN SUPERIOR
+   ========================================== */
+#contenedor-barra-superior {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #eae8e1;
+  font-size: 13px;
+  color: #666;
+  width: 100%;
+}
+
+.miga-de-pan {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.miga-de-pan .separador {
+  color: #aaa;
+}
+
+.miga-de-pan .pagina-actual {
+  color: #1a1a1a;
+  font-weight: 600;
+  text-decoration: none; /* Opcional: elimina el subrayado por defecto del enlace */
+}
+
+.acciones-superiores {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-icono {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+}
+
+.estado-guardado {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #777;
+  font-size: 12px;
+  border-left: 1px solid #e1e0d8;
+  padding-left: 16px;
+}

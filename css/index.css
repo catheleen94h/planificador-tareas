@@ -1,0 +1,319 @@
+/* ==========================================
+     ESTILOS GENERALES Y RESETEO (RESETS)
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #fafaf7;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ==========================================
+    ESTRUCTURA Y PANEL CENTRAL
+   ========================================== */
+.contenedor-principal {
+  width: 100%;
+  margin-left: 240px;
+  flex: 1;
+  padding: 0 40px 40px 40px;
+  box-sizing: border-box;
+}
+
+/* Sección Cabecera del Index */
+.seccion-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.titulos-cabecera {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-principal {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.subtitulo-principal {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.btn-nueva-tarea {
+  background-color: #3b5f48;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-nueva-tarea:hover {
+  background-color: #2f4c3a;
+}
+
+.titulo-seccion-tareas {
+  margin: 32px 0 16px 0;
+  font-size: 18px;
+  color: #222;
+}
+
+/* ==========================================
+    FORMULARIO Y CAMPOS DE ENTRADA
+   ========================================== */
+.tarjeta {
+  background-color: #ffffff;
+  border: 1px solid #e1e4dc;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  max-width: 700px;
+  width: 100%;
+}
+
+.tarjeta-titulo {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.tarjeta-titulo h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.tarjeta-titulo p {
+  font-size: 12px;
+  color: #777;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+small {
+  display: block;
+  font-size: 11px;
+  color: #777;
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #4a6b5d;
+  box-shadow: 0 0 0 3px rgba(74, 107, 93, 0.12);
+}
+
+.nombre, 
+.descripcion {
+  margin-bottom: 4px;
+}
+
+.tarjeta-asignado {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.asignado, 
+.fecha-de-entrega {
+  flex: 1;
+}
+
+.tarjeta-estado {
+  margin-bottom: 4px;
+}
+
+.tarjeta-boton {
+  border-top: 1px solid #eaeaea;
+  padding-top: 16px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tarjeta-boton .texto small {
+  margin: 0;
+}
+
+.btnes {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+#btn-guardar {
+  min-width: 120px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background-color: #3b5f48;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#btn-guardar:hover {
+  background-color: #2f4c3a;
+}
+
+#btn-cancelar {
+  min-width: 90px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background-color: #f4f3ee;
+  color: #444;
+  border: 1px solid #d0d5dd;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#btn-cancelar:hover {
+  background-color: #e5e4de;
+}
+
+/* ==========================================
+    ESTILOS PARA LA TABLA DE TAREAS Y ESTADOS
+   ========================================== */
+.contenedor-tabla-tareas {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.tabla-tareas {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: inherit;
+}
+
+.tabla-tareas th {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #111;
+    border-bottom: 2px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+.tabla-tareas td {
+    padding: 16px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #f0f2f5;
+    vertical-align: middle;
+}
+
+.tabla-tareas tbody tr:hover {
+    background-color: #fafbfc;
+}
+
+/* --- COLORES DE ESTADOS --- */
+.badge-estado {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-transform: capitalize;
+}
+
+/* Finalizado (Verde) */
+.badge-estado.finalizado {
+    background-color: #e6f4ea;
+    color: #137333;
+}
+
+/* En proceso (Amarillo) */
+.badge-estado.en-proceso {
+    background-color: #fef7e0;
+    color: #b06000;
+}
+
+/* Pendiente (Naranja) */
+.badge-estado.pendiente {
+    background-color: #fce8e6;
+    color: #c5221f;
+}
+
+/* Modal */
+#contenedor-formulario-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+}

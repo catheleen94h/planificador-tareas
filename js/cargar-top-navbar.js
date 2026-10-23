@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contenedorTop = document.getElementById('contenedor-top-navbar');
     if (contenedorTop) {
-        fetch('../componentes/navbar-superior/navbar-top.html')
+        fetch('../componentes/navbar-superior/navbar-superior.html')
             .then(res => res.text())
             .then(html => {
                 contenedorTop.innerHTML = html;
