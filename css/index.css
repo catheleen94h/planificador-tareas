@@ -286,6 +286,12 @@ select:focus {
     color: #b06000;
 }
 
+/* En proceso (Azul) */
+.badge-estado.revision {
+    background-color: #fef7e0;
+    color: #3894ac;
+}
+
 /* Pendiente (Naranja) */
 .badge-estado.pendiente {
     background-color: #fce8e6;

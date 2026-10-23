@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-   // Usamos un pequeño retraso o revisamos la URL actual de inmediato
+  
     const activarItemMenu = () => {
         const itemsMenu = document.querySelectorAll(".item-menu");
         if (itemsMenu.length === 0) return; // Si aún no se cargó el HTML, salimos
@@ -37,14 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.classList.add("activo");
                 } 
                 else if (rutaActual.endsWith(hrefItem) || rutaActual.includes(hrefItem)) {
-                    item.classList.add("activo");
-                }
-            }
+                    item.classList.add("activo");} }
 
-            // Evento al hacer clic manualmente
+          
             item.addEventListener("click", (e) => {
                 if (hrefItem === "#") {
-                    e.preventDefault(); // Evita que suba al inicio si es un enlace vacío
+                    e.preventDefault(); 
                 }
                 itemsMenu.forEach(nav => nav.classList.remove("activo"));
                 item.classList.add("activo");
@@ -52,11 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Ejecutar de inmediato
+    
     activarItemMenu();
-
-    // Por si tu barra lateral se carga dinámicamente mediante un script externo, 
-    // reintentamos activarlo medio segundo después para asegurar que ya exista en el DOM.
     setTimeout(activarItemMenu, 300);
 
 
