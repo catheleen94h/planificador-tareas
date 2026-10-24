@@ -224,6 +224,12 @@ select:focus {
   background-color: #e5e4de;
 }
 
+
+.mensaje-error{
+  color: red;
+}
+
+
 /* ==========================================
     ESTILOS PARA LA TABLA DE TAREAS Y ESTADOS
    ========================================== */
@@ -286,10 +292,10 @@ select:focus {
     color: #b06000;
 }
 
-/* En proceso (Azul) */
+/* Revisione (Azul) */
 .badge-estado.revision {
-    background-color: #fef7e0;
-    color: #3894ac;
+    background-color: #e0f2fe; /* Este es el color azul claro */
+    color: #0369a1;            /* Este es el color del texto */
 }
 
 /* Pendiente (Naranja) */

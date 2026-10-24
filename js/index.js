@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (estado.toLowerCase()) {
            case 'finalizado': return 'finalizado';
             case 'en proceso': return 'en-proceso';
-            case 'revisión': return 'revision';
+            case 'revision': return 'revision';
             case 'pendiente': return 'pendiente';
             default: return 'pendiente'; } };
 
