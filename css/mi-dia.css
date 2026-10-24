@@ -1,0 +1,340 @@
+/* ==========================================
+      ESTILOS GENERALES Y RESETEO (RESETS)
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #fafaf7;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+/* ==========================================
+    ESTRUCTURA Y PANEL CENTRAL (MI DÍA)
+   ========================================== */
+.contenedor-principal {
+  width: 100%;
+  margin-left: 240px;
+  flex: 1;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .contenedor-principal {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+/* Sección Cabecera */
+.seccion-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.titulos-cabecera {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-principal {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.subtitulo-principal {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.btn-nueva-tarea {
+  background-color: #3b5f48;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-nueva-tarea:hover {
+  background-color: #2f4c3a;
+}
+
+/* ==========================================
+    GRID DE LA VISTA "MI DÍA"
+   ========================================== */
+.cuadricula-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .cuadricula-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+    TARJETAS CONTENEDORAS
+   ========================================== */
+.tarjeta {
+  background-color: #ffffff;
+  border: 1px solid #e1e4dc;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  width: 100%;
+}
+
+.tarjeta-titulo {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tarjeta-titulo h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.tarjeta-titulo p {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+.icono-configuracion {
+  color: #777;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.icono-configuracion:hover {
+  color: #222;
+}
+
+/* ==========================================
+    TEMPORIZADOR DE ENFOQUE (POMODORO)
+   ========================================== */
+.contenedor-temporizador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.circulo-temporizador {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  border: 12px solid #3b5f48;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafaf7;
+}
+
+.tiempo-temporizador {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.etiqueta-temporizador {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.controles-temporizador {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.boton-control {
+  background-color: #ffffff;
+  border: 1px solid #d0d5dd;
+  color: #333;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.boton-control.activo {
+  background-color: #3b5f48;
+  color: #ffffff;
+  border-color: #3b5f48;
+}
+
+.boton-control:hover:not(.activo) {
+  background-color: #f4f3ee;
+}
+
+.grupo-campo-enfoque {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grupo-campo-enfoque label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.grupo-campo-enfoque input {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.grupo-campo-enfoque input:focus {
+  border-color: #4a6b5d;
+  box-shadow: 0 0 0 3px rgba(74, 107, 93, 0.12);
+}
+
+/* ==========================================
+    LISTA DE METAS / TAREAS DIARIAS
+   ========================================== */
+.lista-tareas {
+  display: flex;
+  flex-direction: column;
+}
+
+.elemento-tarea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.elemento-tarea:last-child {
+  border-bottom: none;
+}
+
+.izquierda-tarea {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.casilla-tarea {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid #d0d5dd;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  margin-top: 2px;
+  position: relative;
+  background-color: #fff;
+}
+
+.casilla-tarea:checked {
+  background-color: #3b5f48;
+  border-color: #3b5f48;
+}
+
+.casilla-tarea:checked::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: -1px;
+  left: 3px;
+  font-weight: bold;
+}
+
+.detalles-tarea h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.detalles-tarea p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* ==========================================
+    ESTILOS DE BADGES / ESTADOS
+   ========================================== */
+.badge-estado {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* Finalizado (Verde) */
+.badge-estado.finalizado {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+/* En proceso (Amarillo) */
+.badge-estado.en-proceso {
+  background-color: #fef7e0;
+  color: #b06000;
+}
+
+/* Revisión (Azul) */
+.badge-estado.revision {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Pendiente (Naranja/Rojo) */
+.badge-estado.pendiente {
+  background-color: #fce8e6;
+  color: #c5221f;
+}

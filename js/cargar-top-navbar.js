@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const contenedorTop = document.getElementById('contenedor-top-navbar');
     if (contenedorTop) {
