@@ -133,7 +133,7 @@ function renderizarMetasDeHoy() {
 }
 
 // ==========================================
-// TEMPORIZADOR DE ENFOQUE (POMODORO)
+// TEMPORIZADOR (POMODORO)
 // ==========================================
 function inicializarTemporizador() {
   let temporizador;

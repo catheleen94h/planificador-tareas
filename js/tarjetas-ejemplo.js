@@ -6,10 +6,7 @@ const tareasInicialesEjemplo = [
     { id: 4, nombre: "Pruebas de usuario", descripcion: "Realizar test de usabilidad del formulario", fechaDeEntrega: "2026-11-06", asignadoA: "Juan Torres", estado: "en proceso" },
     { id: 5, nombre: "Redactar documentación", descripcion: "Escribir manual de uso para nuevos usuarios", fechaDeEntrega: "2026-11-08", asignadoA: "Laura Martínez", estado: "pendiente" },
     { id: 6, nombre: "Ajustar responsive", descripcion: "Verificar diseño en dispositivos móviles", fechaDeEntrega: "2026-11-10", asignadoA: "Ana Gómez", estado: "finalizado" },
-    { id: 7, nombre: "Optimizar imágenes", descripcion: "Comprimir recursos gráficos de la web", fechaDeEntrega: "2026-11-12", asignadoA: "Carlos López", estado: "pendiente" },
-    { id: 8, nombre: "Integrar API", descripcion: "Conectar endpoint de autenticación", fechaDeEntrega: "2026-11-15", asignadoA: "María Pérez", estado: "en proceso" },
-    { id: 9, nombre: "Reunión de avance", descripcion: "Sincronizar tareas semanales con el equipo", fechaDeEntrega: "2026-11-18", asignadoA: "Juan Torres", estado: "finalizado" },
-    { id: 10, nombre: "Despliegue final", descripcion: "Subir la aplicación al servidor final", fechaDeEntrega: "2026-11-20", asignadoA: "Laura Martínez", estado: "pendiente" }
+    
 ];
 
 
