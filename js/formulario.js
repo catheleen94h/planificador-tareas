@@ -3,7 +3,26 @@
 // ==========================================
 class TaskManager {
     constructor() {
-        this.idContador = parseInt(localStorage.getItem('idContador')) || 1;
+        let tareas = JSON.parse(localStorage.getItem('listaTareas')) || [];
+        
+        // Encontrar el ID más alto existente para evitar duplicados
+        const maxId = tareas.reduce((max, t) => (t.id > max ? t.id : max), 0);
+        const savedContador = parseInt(localStorage.getItem('idContador')) || 1;
+        this.idContador = Math.max(maxId + 1, savedContador);
+
+        // Corregir tareas antiguas que no tengan ID asignado
+        let modificado = false;
+        this.tareas = tareas.map(t => {
+            if (!t.id) {
+                modificado = true;
+                return { ...t, id: this.idContador++ };
+            }
+            return t;
+        });
+
+        if (modificado) {
+            this.sincronizarStorage();
+        }
     }
 
     addTask(taskData) {
@@ -73,39 +92,44 @@ function validateTaskForm() {
     let esValido = true;
 
     limpiarError(inputNombre);
-     limpiarError(inputDescripcion);
+    limpiarError(inputDescripcion);
     limpiarError(inputAsignado);
     limpiarError(inputFechaEntrega);
-   limpiarError(selectEstado);
+    limpiarError(selectEstado);
 
     const valorNombre = inputNombre.value.trim();
     if (valorNombre === '' || valorNombre.length <= 8) {
         mostrarError(inputNombre, 'El nombre no puede estar vacío y debe tener más de 8 caracteres.');
-        esValido = false; }
+        esValido = false; 
+    }
 
     const valorDescripcion = inputDescripcion.value.trim();
     if (valorDescripcion === '' || valorDescripcion.length <= 15) {
-     mostrarError(inputDescripcion, 'La descripción no puede estar vacía y debe tener más de 15 caracteres.');
-        esValido = false;  }
+        mostrarError(inputDescripcion, 'La descripción no puede estar vacía y debe tener más de 15 caracteres.');
+        esValido = false;  
+    }
 
     const valorAsignado = inputAsignado.value.trim();
     if (valorAsignado === '' || valorAsignado.length <= 8) {
         mostrarError(inputAsignado, 'El responsable no puede estar vacío y debe tener más de 8 caracteres.');
-          esValido = false;}
+        esValido = false;
+    }
 
     if (inputFechaEntrega.value === '') {
         mostrarError(inputFechaEntrega, 'Debes indicar una fecha de entrega.');
-         esValido = false;}
+        esValido = false;
+    }
 
     if (selectEstado.value === '') {
         mostrarError(selectEstado, 'Debes seleccionar un estado para la tarea.');
-         esValido = false;}
+        esValido = false;
+    }
 
     return esValido;
 }
 
 inputNombre.addEventListener('input', () => limpiarError(inputNombre));
- inputDescripcion.addEventListener('input', () => limpiarError(inputDescripcion));
+inputDescripcion.addEventListener('input', () => limpiarError(inputDescripcion));
 inputAsignado.addEventListener('input', () => limpiarError(inputAsignado));
 inputFechaEntrega.addEventListener('input', () => limpiarError(inputFechaEntrega));
 selectEstado.addEventListener('change', () => limpiarError(selectEstado));
@@ -113,9 +137,9 @@ selectEstado.addEventListener('change', () => limpiarError(selectEstado));
 // Guardar Tarea (Crear o Editar)
 if (botonGuardar) {
     botonGuardar.addEventListener('click', function(evento) {
-    evento.preventDefault();
+        evento.preventDefault();
 
-         if (!validateTaskForm()) {return;}
+        if (!validateTaskForm()) { return; }
 
         const idEnEdicion = formularioTarea.dataset.editandoId;
 
@@ -125,18 +149,20 @@ if (botonGuardar) {
             descripcion: inputDescripcion.value.trim(),
             asignadoA: inputAsignado.value.trim(),
             fechaDeEntrega: inputFechaEntrega.value,
-            estado: selectEstado.value };
+            estado: selectEstado.value 
+        };
 
         if (idEnEdicion) {
             gestorTareas.updateTask(datosTarea);
             delete formularioTarea.dataset.editandoId;
         } else {
             delete datosTarea.id;
-            gestorTareas.addTask(datosTarea); }
+            gestorTareas.addTask(datosTarea); 
+        }
 
         if (contenedorFormulario) {
-        contenedorFormulario.style.display = "none";
-         }
+            contenedorFormulario.style.display = "none";
+        }
 
         formularioTarea.reset();
 
