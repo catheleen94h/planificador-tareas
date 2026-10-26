@@ -1,6 +1,4 @@
-/* ==========================================
-    BARRA DE NAVEGACIÓN SUPERIOR
-   ========================================== */
+
 #contenedor-barra-superior {
   margin: 0;
   padding: 0;
@@ -35,7 +33,7 @@
 .miga-de-pan .pagina-actual {
   color: #1a1a1a;
   font-weight: 600;
-  text-decoration: none; /* Opcional: elimina el subrayado por defecto del enlace */
+  text-decoration: none; 
 }
 
 .acciones-superiores {

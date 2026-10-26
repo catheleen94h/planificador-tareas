@@ -1,6 +1,4 @@
-// ==========================================
-// CLASE TASKMANAGER
-// ==========================================
+
 class TaskManager {
     constructor() {
         let tareas = JSON.parse(localStorage.getItem('listaTareas')) || [];
@@ -56,9 +54,7 @@ class TaskManager {
 
 const gestorTareas = new TaskManager();
 
-// ==========================================
-// SELECCIÓN DE ELEMENTOS Y VALIDACIÓN
-// ==========================================
+
 const formularioTarea = document.getElementById('formulario-tarea');
 const inputNombre = document.getElementById('tarea');
 const inputDescripcion = document.getElementById('descripcion');

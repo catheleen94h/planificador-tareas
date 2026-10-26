@@ -3,20 +3,27 @@
     const contenedorNavbar = document.getElementById('contenedor-navbar');
     if (!contenedorNavbar) return;
 
-    // Función para actualizar los contadores del menú lateral
+    // Actualiza los contadores del menú lateral
     const actualizarContadoresNavbar = () => {
         const tareas = JSON.parse(localStorage.getItem('listaTareas')) || [];
-        
+
         const totalTareas = tareas.length;
-        const tareasCompletadas = tareas.filter(t => t.estado && t.estado.toLowerCase() === 'finalizado').length;
+        const tareasCompletadas = tareas.filter(
+            t => t.estado && t.estado.toLowerCase() === 'finalizado'
+        ).length;
 
         const ahora = new Date();
         const anio = ahora.getFullYear();
         const mes = String(ahora.getMonth() + 1).padStart(2, '0');
         const dia = String(ahora.getDate()).padStart(2, '0');
         const hoyLocal = `${anio}-${mes}-${dia}`;
-        
-        const tareasMiDia = tareas.filter(t => t.fechaDeEntrega && t.fechaDeEntrega.substring(0, 10) === hoyLocal).length;
+
+       const manuales = JSON.parse(localStorage.getItem('metasManuales')) || [];
+
+        const tareasMiDia = tareas.filter(t =>
+         (t.fechaDeEntrega && t.fechaDeEntrega.substring(0, 10) === hoyLocal) ||
+        manuales.includes(t.id)
+            ).length;
 
         const itemsMenu = document.querySelectorAll('.item-menu, .item-menu-estatico');
 
@@ -38,42 +45,38 @@
         });
     };
 
-    // Función para activar el ítem del menú según la página actual
+    // Marca como activo el ítem que corresponde a la página actual
     const activarItemMenu = () => {
-        const itemsMenu = document.querySelectorAll(".item-menu");
+        const itemsMenu = document.querySelectorAll('.item-menu');
         if (itemsMenu.length === 0) return;
 
         const rutaActual = window.location.pathname;
+        const esInicio = rutaActual === '/' || rutaActual.endsWith('index.html');
 
         itemsMenu.forEach(item => {
-            const hrefItem = item.getAttribute("href");
-            item.classList.remove("activo");
+            const hrefItem = item.getAttribute('href');
+            item.classList.remove('activo');
 
-            if (hrefItem && hrefItem !== "#") {
-                if (rutaActual.includes("index") && hrefItem.includes("index")) {
-                    item.classList.add("activo");
-                } else if (rutaActual.endsWith(hrefItem) || rutaActual.includes(hrefItem)) {
-                    item.classList.add("activo");
+            if (hrefItem && hrefItem !== '#') {
+                if (hrefItem.includes('index')) {
+                    if (esInicio) item.classList.add('activo');
+                } else if (rutaActual.endsWith(hrefItem)) {
+                    item.classList.add('activo');
                 }
             }
-            
-            item.addEventListener("click", (e) => {
-                if (hrefItem === "#") {
-                    e.preventDefault(); 
+
+            item.addEventListener('click', (e) => {
+                if (hrefItem === '#') {
+                    e.preventDefault();
                 }
-                itemsMenu.forEach(nav => nav.classList.remove("activo"));
-                item.classList.add("activo");
+                itemsMenu.forEach(nav => nav.classList.remove('activo'));
+                item.classList.add('activo');
             });
         });
     };
 
-    // DETECCIÓN INTELIGENTE DE RUTA SEGÚN LA VISTA ACTUAL
-    // Si estamos dentro de la carpeta /mi-dia/, subimos un nivel; de lo contrario entramos desde la raíz
-    const rutaNavbar = window.location.pathname.includes('/mi-dia/') 
-        ? '../navbar-lateral/navbar.html' 
-        : './componentes/navbar-lateral/navbar.html';
-
-    fetch(rutaNavbar)
+    // Carga la navbar
+    fetch('componentes/navbar.html')
         .then(respuesta => {
             if (!respuesta.ok) {
                 throw new Error('No se pudo cargar la barra de navegación');
@@ -82,21 +85,17 @@
         })
         .then(html => {
             contenedorNavbar.innerHTML = html;
-            
             actualizarContadoresNavbar();
             activarItemMenu();
-            setTimeout(activarItemMenu, 200);
         })
         .catch(error => console.error('Error al cargar el navbar:', error));
 
-    // Escuchar eventos globales de cambios en las tareas
+    // Escucha cambios en las tareas
     window.addEventListener('tareaAgregada', actualizarContadoresNavbar);
     window.addEventListener('storage', (e) => {
-        if (e.key === 'listaTareas') {
-            actualizarContadoresNavbar();
-        }
+    if (e.key === 'listaTareas' || e.key === 'metasManuales') {
+        actualizarContadoresNavbar();
+    }
     });
-
-    setTimeout(actualizarContadoresNavbar, 300);
-    setTimeout(actualizarContadoresNavbar, 800);
 });
+
