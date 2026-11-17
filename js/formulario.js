@@ -64,6 +64,17 @@ const selectEstado = document.getElementById('estado');
 const botonGuardar = document.getElementById('btn-guardar');
 const contenedorFormulario = document.getElementById("contenedor-formulario-modal");
 
+function obtenerFechaHoy() {
+    const ahora = new Date();
+    const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+    const dia = String(ahora.getDate()).padStart(2, '0');
+    return `${ahora.getFullYear()}-${mes}-${dia}`;
+}
+
+// El calendario deshabilita los días anteriores a hoy
+inputFechaEntrega.min = obtenerFechaHoy();
+
+
 function mostrarError(elemento, mensaje) {
     let errorExistente = elemento.parentElement.querySelector('.mensaje-error');
     if (!errorExistente) {
@@ -112,8 +123,9 @@ function validateTaskForm() {
     }
 
     if (inputFechaEntrega.value === '') {
-        mostrarError(inputFechaEntrega, 'Debes indicar una fecha de entrega.');
-        esValido = false;
+    mostrarError(inputFechaEntrega, 'Debes indicar una fecha de entrega.');
+    esValido = false;
+    } else if (!formularioTarea.dataset.editandoId && inputFechaEntrega.value < obtenerFechaHoy()) {
     }
 
     if (selectEstado.value === '') {
