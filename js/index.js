@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectEstado = document.getElementById('estado');
      const formulario = document.getElementById('formulario-tarea');
     
-    // Función para convertir el estado de la tarea en una clase CSS válida
+    
     const convertirClaseEstado = (estado) => {
         switch (estado.toLowerCase()) {
            case 'finalizado': return 'finalizado';
@@ -68,9 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
         todasLasTareas.forEach(tarea => {
             const fila = document.createElement('tr');
             const claseEstado = convertirClaseEstado(tarea.estado);
+
+            if (claseEstado === 'finalizado') { fila.classList.add('tarea-finalizada');}
+
             
             fila.innerHTML = `
-                <td>${tarea.nombre}</td>
+                <td>
+                <input type="checkbox" class="casilla-tarea" style="margin-right: 8px;" ${(tarea.estado || '').toLowerCase() === 'finalizado' ? 'checked' : ''}>
+                ${tarea.nombre}</td>
                 <td><strong>${tarea.descripcion}</strong></td>
                 <td>${tarea.fechaDeEntrega}</td>
                 <td>${tarea.asignadoA}</td>
@@ -103,7 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 gestorIndex.deleteTask(tarea.id);
                 renderizarTareas();
             });
+            // Lógica del checkbox: marcar / desmarcar como finalizada
+                const check = fila.querySelector('.casilla-tarea');
+                check.addEventListener('change', () => {
+                    const tareas = gestorIndex.getAllTasks().map(t => {
+                        if (t.id !== tarea.id) return t;
 
+                        if (check.checked) {
+                            if ((t.estado || '').toLowerCase() !== 'finalizado') {
+                                t.estadoAnterior = t.estado;   // para poder deshacer
+                            }
+                            t.estado = 'finalizado';
+                        } else {
+                            t.estado = t.estadoAnterior || 'pendiente';
+                        }
+                        return t;
+                    });
+
+                    localStorage.setItem('listaTareas', JSON.stringify(tareas));
+                    window.dispatchEvent(new Event('tareaAgregada')); // vuelve a dibujar la lista
+                });
             contenedorLista.appendChild(fila);
         });
     }

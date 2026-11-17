@@ -158,7 +158,7 @@ function inicializarMetas() {
             manuales.push(id);
             guardarManuales(manuales);
         }
-        window.dispatchEvent(new Event('tareaAgregada')); // refresca metas y contador del menú
+        window.dispatchEvent(new Event('tareaAgregada')); 
     });
 
     window.addEventListener('storage', (e) => {
@@ -169,9 +169,7 @@ function inicializarMetas() {
     refrescar();
 }
 
-// ==========================================
-// TEMPORIZADOR (POMODORO)
-// ==========================================
+/*POMODORO*/
 function inicializarTemporizador() {
     let temporizador;
     let segundosTotales = 25 * 60;
